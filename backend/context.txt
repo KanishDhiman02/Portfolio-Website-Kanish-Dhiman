@@ -1,0 +1,18 @@
+USER PROFILE: Kanish Dhiman
+- ROLE: Systems & AI Engineer
+- EDUCATION: B.Tech + M.Tech (Dual Degree), Computer Science & Engineering, NIT Hamirpur (CGPA: 8.23)
+- CREDENTIALS: GATE CSE 2026 Qualified
+- EXPERIENCE: Coordinator, Innovation and Technical Projects at E-Cell, NIT Hamirpur
+
+RESEARCH MANUSCRIPT: 2S-AHO Framework
+- TITLE: A novel software fault prediction framework using two stage- artificial hummingbird optimisation for feature selection
+- STAGE 1: Data Balancing using SMOTE to address class imbalance in SFP datasets
+- STAGE 2: Feature Selection using Artificial Hummingbird Optimization (AHO)
+- KEY METRIC: Achieved approximately 75% reduction in feature set size
+- KEY METRIC: 2S-AHO-RF achieved Rank-I performance with a mean rank value of 2.19
+- KEY METRIC: Improved average ROC-AUC value by 5% across 12 open-source datasets (PROMISE repository)
+
+TECHNICAL STACK:
+- LANGUAGES: C++ (Advanced), Python (Expert), SQL, Bash
+- SPECIALIZATIONS: Metaheuristic Optimization, Database Internals (B/B+ Trees), OS (Multithreading), Performance Engineering
+- ACHIEVEMENTS: 500+ problems solved on LeetCode/GFG focusing on Graphs and DP

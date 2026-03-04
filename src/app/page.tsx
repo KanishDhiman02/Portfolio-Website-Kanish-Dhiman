@@ -7,6 +7,7 @@ import Research from "@/components/Research";
 import CodeShowcase from "@/components/CodeShowcase";
 import BentoGrid from "@/components/BentoGrid";
 import Contact from "@/components/Contact";
+import AIAgent from "@/components/AIAgent";
 
 export default function Home() {
   return (
@@ -35,6 +36,9 @@ export default function Home() {
         {/* Contact Protocol: Career and Research inquiries */}
         <Contact />
       </div>
+
+      {/* The Agentic Intelligence Layer */}
+      <AIAgent />
 
       {/* Engineering Accent: Subtle Bottom Glow */}
       <div className="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyan-500/5 to-transparent pointer-events-none z-0" />

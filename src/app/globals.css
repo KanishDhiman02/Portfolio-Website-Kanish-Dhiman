@@ -1,30 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505; /* Deep Obsidian */
+  --foreground: #E0E0E0;
+  --accent: #00F5FF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Force dark theme regardless of system settings */
+html, body {
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  /* Engineering Grid Overlay */
+  background-image: 
+    linear-gradient(to right, #121212 1px, transparent 1px),
+    linear-gradient(to bottom, #121212 1px, transparent 1px);
+  background-size: 40px 40px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  cursor: none !important; /* Keep your custom reticle cursor */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,body {
+/* Ensure interactive elements don't show the default pointer */
+a, button, [role="button"] {
   cursor: none !important;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
-a, button,[role="button"] {
-  cursor: none !important;
+
+/* Utility for the glass effect used in your project cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
 }
