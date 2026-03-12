@@ -199,7 +199,7 @@ const TechStack = () => {
           ))}
         </Physics>
         <Environment
-          files="/models/char_enviorment.hdr"
+          preset="night"
           environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />

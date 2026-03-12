@@ -24,7 +24,20 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setIsLoading,
     setLoading,
   };
-  useEffect(() => {}, [loading]);
+
+  useEffect(() => {
+    // Auto-progress loading
+    let percent = 0;
+    const interval = setInterval(() => {
+      percent += 2;
+      if (percent >= 100) {
+        percent = 100;
+        clearInterval(interval);
+      }
+      setLoading(percent);
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <LoadingContext.Provider value={value as LoadingType}>
