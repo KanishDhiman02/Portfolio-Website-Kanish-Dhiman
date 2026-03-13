@@ -1,32 +1,127 @@
 import "./styles/Landing.css";
+import { smoother } from "./Navbar";
 
 const Landing = () => {
+  const handleSectionLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    target: string
+  ) => {
+    event.preventDefault();
+
+    if (smoother) {
+      smoother.scrollTo(target, true, "top top");
+      return;
+    }
+
+    const section = document.querySelector(target);
+    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <>
-      <div className="landing-section" id="landingDiv">
-        <div className="landing-container">
-          <div className="landing-intro">
-            <h2>Hello! I'm</h2>
-            <h1>
-              KANISH
-              <br />
-              <span>DHIMAN</span>
-            </h1>
+    <section className="landing-section" id="landingDiv">
+      {/* MacBook Frame */}
+      <div className="macbook">
+        <div className="macbook-screen">
+          {/* Notch / Camera */}
+          <div className="macbook-notch"></div>
+
+          {/* Screen content */}
+          <div className="screen-content">
+            {/* Inner navbar */}
+            <nav className="screen-nav">
+              <div className="screen-nav-left">
+                <a
+                  href="#landingDiv"
+                  className="screen-nav-icon"
+                  onClick={(event) => handleSectionLinkClick(event, "#landingDiv")}
+                >
+                  ✦
+                </a>
+                <a
+                  href="#about"
+                  className="screen-nav-link"
+                  onClick={(event) => handleSectionLinkClick(event, "#about")}
+                >
+                  About Me
+                </a>
+                <a
+                  href="#work"
+                  className="screen-nav-link"
+                  onClick={(event) => handleSectionLinkClick(event, "#work")}
+                >
+                  Portfolio
+                </a>
+                <a
+                  href="#work"
+                  className="screen-nav-link"
+                  onClick={(event) => handleSectionLinkClick(event, "#work")}
+                >
+                  Services
+                </a>
+                <a
+                  href="#contact"
+                  className="screen-nav-link"
+                  onClick={(event) => handleSectionLinkClick(event, "#contact")}
+                >
+                  Blog
+                </a>
+              </div>
+              <a
+                href="#contact"
+                className="screen-nav-cta"
+                onClick={(event) => handleSectionLinkClick(event, "#contact")}
+              >
+                Book A Call ↗
+              </a>
+            </nav>
+
+            {/* Main hero area */}
+            <div className="screen-hero">
+              {/* Vertical text left */}
+              <div className="screen-vertical-text">Full Stack Developer</div>
+
+              {/* Left content */}
+              <div className="screen-left">
+                <div className="screen-stats">
+                  <div className="screen-stat">
+                    <span className="screen-stat-num">+200</span>
+                    <span className="screen-stat-label">Project completed</span>
+                  </div>
+                  <div className="screen-stat">
+                    <span className="screen-stat-num">+50</span>
+                    <span className="screen-stat-label">Startup raised</span>
+                  </div>
+                </div>
+
+                <h1 className="screen-hello">Hello</h1>
+                <p className="screen-subtitle">
+                  — It's Kanish, a full stack developer
+                </p>
+              </div>
+
+              {/* Photo - right side */}
+              <div className="screen-photo">
+                <img src="/images/mee.png" alt="Kanish" className="screen-photo-img" />
+              </div>
+            </div>
+
+            {/* Bottom bar */}
+            <div className="screen-bottom">
+              <span className="screen-year">2025</span>
+              <span className="screen-scroll">Scroll down ↓</span>
+            </div>
           </div>
-          <div className="landing-info">
-            <h3>A Full Stack</h3>
-            <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Developer</div>
-              <div className="landing-h2-2">Engineer</div>
-            </h2>
-            <h2>
-              <div className="landing-h2-info">Engineer</div>
-              <div className="landing-h2-info-1">Developer</div>
-            </h2>
+        </div>
+
+        {/* MacBook body/hinge */}
+        <div className="macbook-base">
+          <div className="macbook-base-top"></div>
+          <div className="macbook-base-bottom">
+            <div className="macbook-base-indent"></div>
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

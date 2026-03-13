@@ -21,9 +21,9 @@ const Navbar = () => {
     });
 
     smoother.scrollTop(0);
-    smoother.paused(true);
+    smoother.paused(false);
 
-    let links = document.querySelectorAll(".dynamic-island ul a");
+    let links = document.querySelectorAll(".dynamic-island a[data-href]");
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
@@ -42,18 +42,13 @@ const Navbar = () => {
   return (
     <>
       <nav className="dynamic-island">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+        <a href="#landingDiv" data-href="#landingDiv" className="navbar-title">
           KD
         </a>
         <ul>
           <li>
             <a data-href="#about" href="#about">
               <HoverLinks text="ABOUT" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
             </a>
           </li>
           <li>
@@ -65,7 +60,6 @@ const Navbar = () => {
         <a
           href="mailto:dhimank831@gmail.com"
           className="navbar-connect"
-          data-cursor="disable"
         >
           dhimank831@gmail.com
         </a>

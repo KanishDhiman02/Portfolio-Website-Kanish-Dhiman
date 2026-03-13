@@ -10,27 +10,52 @@ const Loading = ({ percent }: { percent: number }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
 
-  if (percent >= 100) {
-    setTimeout(() => {
+  useEffect(() => {
+    if (percent < 100) return;
+
+    let revealTimer: number | undefined;
+    const loadedTimer = window.setTimeout(() => {
       setLoaded(true);
-      setTimeout(() => {
+      revealTimer = window.setTimeout(() => {
         setIsLoaded(true);
       }, 1000);
     }, 600);
-  }
+
+    return () => {
+      window.clearTimeout(loadedTimer);
+      if (revealTimer) {
+        window.clearTimeout(revealTimer);
+      }
+    };
+  }, [percent]);
 
   useEffect(() => {
-    import("./utils/initialFX").then((module) => {
-      if (isLoaded) {
-        setClicked(true);
-        setTimeout(() => {
-          if (module.initialFX) {
-            module.initialFX();
-          }
+    if (!isLoaded) return;
+
+    let isMounted = true;
+
+    const runEntryAnimation = async () => {
+      setClicked(true);
+
+      await new Promise((resolve) => window.setTimeout(resolve, 900));
+
+      try {
+        const module = await import("./utils/initialFX");
+        module.initialFX?.();
+      } catch {
+        document.body.style.overflowY = "auto";
+      } finally {
+        if (isMounted) {
           setIsLoading(false);
-        }, 900);
+        }
       }
-    });
+    };
+
+    runEntryAnimation();
+
+    return () => {
+      isMounted = false;
+    };
   }, [isLoaded]);
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
@@ -45,7 +70,7 @@ const Loading = ({ percent }: { percent: number }) => {
   return (
     <>
       <div className="loading-header">
-        <a href="/#" className="loader-title" data-cursor="disable">
+        <a href="/#" className="loader-title">
           KD
         </a>
         <div className={`loaderGame ${clicked && "loader-out"}`}>

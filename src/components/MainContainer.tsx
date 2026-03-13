@@ -1,15 +1,10 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import About from "./About";
-import Career from "./Career";
 import Contact from "./Contact";
-import Cursor from "./Cursor";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
-import WhatIDo from "./WhatIDo";
-import Work from "./Work";
 import setSplitText from "./utils/splitText";
-import StarField from "./StarField";
 
 const TechStack = lazy(() => import("./TechStack"));
 
@@ -32,8 +27,6 @@ const MainContainer = () => {
 
   return (
     <div className="container-main">
-      <StarField />
-      <Cursor />
       <Navbar />
       <SocialIcons />
       <div id="smooth-wrapper">
@@ -41,9 +34,6 @@ const MainContainer = () => {
           <div className="container-main">
             <Landing />
             <About />
-            <WhatIDo />
-            <Career />
-            <Work />
             {isDesktopView && (
               <Suspense fallback={<div>Loading....</div>}>
                 <TechStack />
