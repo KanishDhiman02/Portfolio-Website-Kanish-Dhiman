@@ -78,24 +78,24 @@ const Landing = () => {
             {/* Main hero area */}
             <div className="screen-hero">
               {/* Vertical text left */}
-              <div className="screen-vertical-text">Full Stack Developer</div>
+              <div className="screen-vertical-text">PORTFOLIO</div>
 
               {/* Left content */}
               <div className="screen-left">
                 <div className="screen-stats">
                   <div className="screen-stat">
-                    <span className="screen-stat-num">+200</span>
-                    <span className="screen-stat-label">Project completed</span>
+                    <span className="screen-stat-num">skdjbnflksd</span>
+                    <span className="screen-stat-label">abcd</span>
                   </div>
                   <div className="screen-stat">
-                    <span className="screen-stat-num">+50</span>
-                    <span className="screen-stat-label">Startup raised</span>
+                    <span className="screen-stat-num">xyz</span>
+                    <span className="screen-stat-label">mnop</span>
                   </div>
                 </div>
 
                 <h1 className="screen-hello">Hello</h1>
                 <p className="screen-subtitle">
-                  — It's Kanish, a full stack developer
+                  — It's Kanish, a software engineer specializing in crafting seamless digital experience. 
                 </p>
               </div>
 
@@ -107,7 +107,7 @@ const Landing = () => {
 
             {/* Bottom bar */}
             <div className="screen-bottom">
-              <span className="screen-year">2025</span>
+              <span className="screen-year">2026</span>
               <span className="screen-scroll">Scroll down ↓</span>
             </div>
           </div>
