@@ -27,11 +27,11 @@ export function initialFX() {
 
   // "Hello" text animation
   const helloSplit = new SplitText(".screen-hello", {
-    type: "chars,lines",
+    type: "words,lines",
     linesClass: "split-line",
   });
   masterTL.fromTo(
-    helloSplit.chars,
+    helloSplit.words,
     { opacity: 0, y: 60, filter: "blur(4px)" },
     {
       opacity: 1,

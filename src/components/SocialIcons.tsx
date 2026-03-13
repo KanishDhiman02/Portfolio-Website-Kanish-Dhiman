@@ -1,9 +1,11 @@
 import {
   FaGithub,
-  FaInstagram,
+
   FaLinkedinIn,
   FaEnvelope,
+  
 } from "react-icons/fa6";
+import { SiLeetcode } from "react-icons/si";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
@@ -75,8 +77,8 @@ const SocialIcons = () => {
           </a>
         </span>
         <span>
-          <a href="https://www.instagram.com/kanishdhiman02" target="_blank">
-            <FaInstagram />
+          <a href="https://leetcode.com/u/kanish_dhiman02/" target="_blank">
+            <SiLeetcode />
           </a>
         </span>
       </div>

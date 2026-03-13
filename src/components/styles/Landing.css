@@ -56,7 +56,7 @@
 .screen-content {
   background: #F8F8F8;
   border-radius: 4px 4px 0 0;
-  padding: clamp(14px, 2.5vw, 32px);
+  padding: clamp(12px, 1.8vw, 24px);
   display: flex;
   flex-direction: column;
   aspect-ratio: 16 / 10;
@@ -195,17 +195,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: clamp(72px, 0.5vw, 8px);
-  padding-right: clamp(8px, 1vw, 46px);
+  padding-left: clamp(14px, 2vw, 34px);
+  padding-right: clamp(10px, 1.2vw, 24px);
   z-index: 2;
   position: relative;
-  max-width: 50%;
+  max-width: 54%;
 }
 
 /* Stats */
 .screen-stats {
   display: flex;
   gap: clamp(12px, 2.2vw, 30px);
+  transform: translateY(-80%);
   margin-bottom: clamp(8px, 1.5vw, 20px);
 }
 
@@ -230,13 +231,19 @@
 
 /* Hello */
 .screen-hello {
-  font-size: clamp(28px, 5.5vw, 80px);
+  font-size: clamp(17px, 3vw, 44px);
   font-weight: 700;
   color: #1a1a1a;
   margin: 0;
-  line-height: 0.95;
+  line-height: 0.98;
+  max-width: 12ch;
+  overflow-wrap: normal;
+  word-break: normal;
   letter-spacing: -0.03em;
   font-family: "Geist", sans-serif;
+  transform: translateY(-20%);
+  padding-left: 40px;
+
 }
 
 .screen-subtitle {
@@ -245,6 +252,8 @@
   margin: clamp(4px, 0.8vw, 12px) 0 0;
   font-weight: 400;
   font-style: italic;
+  transform: translateY(20%);
+
 }
 
 /* Photo */
@@ -253,7 +262,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  width: 50%;
+  width: 46%;
   display: flex;
   align-items: stretch;
   justify-content: flex-end;
