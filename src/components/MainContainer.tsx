@@ -5,6 +5,7 @@ import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import Projects from "./Projects";
+import WaveCta from "./WaveCta";
 import setSplitText from "./utils/splitText";
 
 const TechStack = lazy(() => import("./TechStack"));
@@ -41,6 +42,7 @@ const MainContainer = () => {
                 <TechStack />
               </Suspense>
             )}
+            <WaveCta />
             <Contact />
           </div>
         </div>

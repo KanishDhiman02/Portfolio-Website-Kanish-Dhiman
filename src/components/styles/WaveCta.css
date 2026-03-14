@@ -1,0 +1,184 @@
+.wave-cta {
+  position: relative;
+  min-height: 100svh;
+  margin-top: 56px;
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 460px at 50% 100%, rgba(232, 230, 225, 0.2) 0%, rgba(232, 230, 225, 0) 72%),
+    linear-gradient(180deg, #1c2730 0%, #18222b 45%, #141d25 100%);
+  color: #f2efe7;
+}
+
+.wave-cta-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.wave-cta-kicker {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.wave-cta-title {
+  margin: 12px 0 28px;
+  font-size: clamp(56px, 11vw, 148px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-weight: 450;
+}
+
+.wave-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: #ece8de;
+  color: #172029;
+  border-radius: 999px;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
+}
+
+.wave-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
+}
+
+.wave-cta-top-trail,
+.wave-cta-bottom-field {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.wave-cta-top-trail {
+  bottom: 32%;
+  height: 52%;
+}
+
+.wave-cta-bottom-field {
+  bottom: -4%;
+  height: 62%;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 100%);
+}
+
+.wave-particle {
+  position: absolute;
+  display: block;
+  background: #f2efe7;
+  animation-name: waveParticlePulse, waveParticleSway;
+  animation-timing-function: ease-in-out, cubic-bezier(0.5, 0, 0.5, 1);
+  animation-iteration-count: infinite, infinite;
+}
+
+.wave-particle-square {
+  border-radius: 2px;
+}
+
+.wave-particle-diamond {
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.wave-particle-cross {
+  background: transparent;
+}
+
+.wave-particle-cross::before,
+.wave-particle-cross::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 1.5px;
+  background: #f2efe7;
+  transform-origin: center;
+}
+
+.wave-particle-cross::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.wave-particle-cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@keyframes waveParticlePulse {
+  0%,
+  100% {
+    opacity: calc(var(--alpha, 0.7) * 0.58);
+  }
+  50% {
+    opacity: var(--alpha, 0.9);
+  }
+}
+
+@keyframes waveParticleSway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg));
+  }
+  25% {
+    transform: translate3d(var(--drift), -12px, 0) rotate(calc(var(--rot, 0deg) + 6deg));
+  }
+  50% {
+    transform: translate3d(calc(var(--drift) * -0.8), -20px, 0) rotate(calc(var(--rot, 0deg) - 6deg));
+  }
+  75% {
+    transform: translate3d(calc(var(--drift) * 0.6), -8px, 0) rotate(calc(var(--rot, 0deg) + 4deg));
+  }
+}
+
+@media (max-width: 900px) {
+  .wave-cta {
+    min-height: 86svh;
+  }
+
+  .wave-cta-inner {
+    width: calc(100% - 28px);
+    min-height: 86svh;
+  }
+
+  .wave-cta-kicker {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .wave-cta-title {
+    font-size: clamp(46px, 16vw, 74px);
+  }
+
+  .wave-cta-button {
+    font-size: 12px;
+    padding: 12px 22px;
+  }
+
+  .wave-cta-top-trail {
+    bottom: 30%;
+    height: 48%;
+  }
+
+  .wave-cta-bottom-field {
+    bottom: -10%;
+    height: 64%;
+  }
+}

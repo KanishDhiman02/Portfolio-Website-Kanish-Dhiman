@@ -5,21 +5,28 @@
   height: 480px;
   perspective: 1000px; 
   cursor: pointer;
+  padding-bottom: 20px;
 }
 
+.section-heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  font-family: "Geist", sans-serif;
+  letter-spacing: -0.03em;
+  color: #1a1a1a;  
+  text-align: center;
+
+}
 /* The inner wrapper that actually rotates */
 .project-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   text-align: left;
-  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); /* Smooth, premium physics */
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); /* Smooth, premium physics */
   transform-style: preserve-3d;
-}
-
-/* Trigger the flip when the 'flipped' class is added via scroll */
-.project-card-container.flipped .project-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(calc(180deg * var(--project-open-progress, 0)));
 }
 
 /* Hide the back of the card when facing away */
@@ -33,12 +40,14 @@
   overflow: hidden;
 }
 
-/* The Blue Card Image (Front) */
+/* Plain card front */
 .project-card-front {
-  background-color: #000; /* Fallback */
-  /* We will inject your card image via inline style in React */
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(160deg, #ece8de 0%, #dfdbd2 52%, #d4cfc4 100%);
+  border: 1px solid rgba(86, 82, 78, 0.26);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* The SDE Content (Back) */
@@ -46,9 +55,10 @@
   background-color: #f8f8f8;
   color: #1a1a1a;
   transform: rotateY(180deg);
-  padding: 32px;
+  padding: 35px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
@@ -86,76 +96,100 @@
   font-weight: bold;
 }
 
+.project-github-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-family: "Geist", sans-serif;
+  transition: opacity 0.2s ease;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.project-github-link:hover {
+  opacity: 0.6;
+}
+
+.project-github-link .arrow {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.project-github-link:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+.project-card-container.card-3 .project-github-link {
+  padding-left: 20px;
+}
+
+.project-card-container.card-3 .project-title,
+.project-card-container.card-3 .project-tech,
+.project-card-container.card-3 .project-details {
+  padding-left: 20px;
+}
+
+
+
 .projects-grid {
+  --project-open-progress: 0;
   display: flex;
+  flex-wrap: wrap;
+
   align-items: center;
   perspective: 1400px;
   min-height: 540px;
-  gap: 68px;
+  gap: calc(40px * var(--project-open-progress, 0));
   justify-content: center;
   transition: gap 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .projects-grid .project-card-container {
+  transform-origin: center bottom;
   transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
     margin 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.projects-grid.stacked {
-  gap: 0;
+.projects-grid .project-card-container:not(:first-child) {
+  margin-left: calc(-200px * (1 - var(--project-open-progress, 0)));
 }
 
-.projects-grid.stacked .project-card-container {
-  margin-left: -210px;
-  transform-origin: center bottom;
+.projects-grid .project-card-container.card-1 {
+  transform: translateX(calc(82px * (1 - var(--project-open-progress, 0)))) rotate(calc(-9deg * (1 - var(--project-open-progress, 0)))) scale(calc(0.98 + 0.02 * var(--project-open-progress, 0)));
+  z-index: 4;
 }
 
-.projects-grid.stacked .project-card-container:first-child {
-  margin-left: 0;
+.projects-grid .project-card-container.card-2 {
+  transform: translateX(0) rotate(0deg) scale(1);
+  z-index: 5;
 }
 
-.projects-grid.stacked .project-card-container.card-1 {
-  transform: translateX(54px) rotate(-8deg) scale(0.98);
-  z-index: 3;
-}
-
-.projects-grid.stacked .project-card-container.card-2 {
-  transform: translateX(-54px) rotate(9deg) scale(0.98);
+.projects-grid .project-card-container.card-3 {
+  transform: translateX(calc(-82px * (1 - var(--project-open-progress, 0)))) rotate(calc(9deg * (1 - var(--project-open-progress, 0)))) scale(calc(0.98 + 0.02 * var(--project-open-progress, 0)));
   z-index: 2;
-}
-
-.projects-grid.unstacked .project-card-container {
-  margin-left: 0;
-  transform-origin: center center;
-}
-
-.projects-grid.unstacked .project-card-container.card-1 {
-  transform: translateX(-30px) rotate(-4deg) scale(1);
-  z-index: 2;
-}
-
-.projects-grid.unstacked .project-card-container.card-2 {
-  transform: translateX(30px) rotate(4deg) scale(1);
-  z-index: 1;
 }
 
 @media (max-width: 900px) {
-  .projects-grid,
-  .projects-grid.stacked,
-  .projects-grid.unstacked {
+  .projects-grid {
     flex-direction: column;
     gap: 24px;
     min-height: auto;
   }
 
-  .projects-grid.stacked .project-card-container,
-  .projects-grid.unstacked .project-card-container,
-  .projects-grid.stacked .project-card-container:first-child,
-  .projects-grid.stacked .project-card-container.card-1,
-  .projects-grid.stacked .project-card-container.card-2,
-  .projects-grid.unstacked .project-card-container.card-1,
-  .projects-grid.unstacked .project-card-container.card-2 {
+  .project-card-container.card-3 .project-card-back {
+    padding-left: 35px;
+  }
+
+  .projects-grid .project-card-container:not(:first-child),
+  .projects-grid .project-card-container.card-1,
+  .projects-grid .project-card-container.card-2,
+  .projects-grid .project-card-container.card-3 {
     margin-left: 0;
-    transform: translateX(0) scale(1);
+    transform: translateX(0) rotate(0deg) scale(1);
   }
 }
