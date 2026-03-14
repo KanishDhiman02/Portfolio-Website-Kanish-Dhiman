@@ -79,7 +79,7 @@ const Projects = () => {
 
   return (
     <section ref={sectionRef} className="projects-section" id="projects">
-      <h2 className="section-heading">Engineered Systems</h2>
+      <h2 className="section-heading">ENGINEERED SYSTEMS</h2>
       <div
         className="projects-grid"
         style={{ '--project-open-progress': openProgress } as CSSProperties}

@@ -9,7 +9,7 @@
 }
 
 .section-heading {
-  font-size: 32px;
+  font-size: 80px;
   font-weight: 700;
   margin-bottom: 40px;
   font-family: "Geist", sans-serif;
@@ -175,6 +175,10 @@
 }
 
 @media (max-width: 900px) {
+  .section-heading {
+    font-size: 40px;
+  }
+
   .projects-grid {
     flex-direction: column;
     gap: 24px;
