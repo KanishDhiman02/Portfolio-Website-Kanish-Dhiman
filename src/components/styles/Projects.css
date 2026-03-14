@@ -1,0 +1,161 @@
+/* The container creates the 3D space */
+.project-card-container {
+  background-color: transparent;
+  width: 320px;
+  height: 480px;
+  perspective: 1000px; 
+  cursor: pointer;
+}
+
+/* The inner wrapper that actually rotates */
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); /* Smooth, premium physics */
+  transform-style: preserve-3d;
+}
+
+/* Trigger the flip when the 'flipped' class is added via scroll */
+.project-card-container.flipped .project-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Hide the back of the card when facing away */
+.project-card-front, .project-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari support */
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* The Blue Card Image (Front) */
+.project-card-front {
+  background-color: #000; /* Fallback */
+  /* We will inject your card image via inline style in React */
+  background-size: cover;
+  background-position: center;
+}
+
+/* The SDE Content (Back) */
+.project-card-back {
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  transform: rotateY(180deg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.project-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-family: "Geist", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.project-tech {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.project-bullet {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  padding-left: 12px;
+  position: relative;
+}
+
+.project-bullet::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.projects-grid {
+  display: flex;
+  align-items: center;
+  perspective: 1400px;
+  min-height: 540px;
+  gap: 68px;
+  justify-content: center;
+  transition: gap 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.projects-grid .project-card-container {
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    margin 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.projects-grid.stacked {
+  gap: 0;
+}
+
+.projects-grid.stacked .project-card-container {
+  margin-left: -210px;
+  transform-origin: center bottom;
+}
+
+.projects-grid.stacked .project-card-container:first-child {
+  margin-left: 0;
+}
+
+.projects-grid.stacked .project-card-container.card-1 {
+  transform: translateX(54px) rotate(-8deg) scale(0.98);
+  z-index: 3;
+}
+
+.projects-grid.stacked .project-card-container.card-2 {
+  transform: translateX(-54px) rotate(9deg) scale(0.98);
+  z-index: 2;
+}
+
+.projects-grid.unstacked .project-card-container {
+  margin-left: 0;
+  transform-origin: center center;
+}
+
+.projects-grid.unstacked .project-card-container.card-1 {
+  transform: translateX(-30px) rotate(-4deg) scale(1);
+  z-index: 2;
+}
+
+.projects-grid.unstacked .project-card-container.card-2 {
+  transform: translateX(30px) rotate(4deg) scale(1);
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .projects-grid,
+  .projects-grid.stacked,
+  .projects-grid.unstacked {
+    flex-direction: column;
+    gap: 24px;
+    min-height: auto;
+  }
+
+  .projects-grid.stacked .project-card-container,
+  .projects-grid.unstacked .project-card-container,
+  .projects-grid.stacked .project-card-container:first-child,
+  .projects-grid.stacked .project-card-container.card-1,
+  .projects-grid.stacked .project-card-container.card-2,
+  .projects-grid.unstacked .project-card-container.card-1,
+  .projects-grid.unstacked .project-card-container.card-2 {
+    margin-left: 0;
+    transform: translateX(0) scale(1);
+  }
+}

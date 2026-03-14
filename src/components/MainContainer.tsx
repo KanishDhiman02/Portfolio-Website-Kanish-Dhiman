@@ -4,6 +4,7 @@ import Contact from "./Contact";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
+import Projects from "./Projects";
 import setSplitText from "./utils/splitText";
 
 const TechStack = lazy(() => import("./TechStack"));
@@ -34,6 +35,7 @@ const MainContainer = () => {
           <div className="container-main">
             <Landing />
             <About />
+            <Projects />
             {isDesktopView && (
               <Suspense fallback={<div>Loading....</div>}>
                 <TechStack />
