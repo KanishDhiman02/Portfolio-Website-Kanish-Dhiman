@@ -29,8 +29,8 @@ function animChar(inner: AnimatedInner, delay: number): void {
     if (inner._animating) return;
     inner._animating = true;
 
-    const upDur = 420;
-    const downDur = 520;
+    const upDur = 950;
+    const downDur = 1100;
     let start: number | null = null;
 
     const up = (ts: number) => {
@@ -107,7 +107,7 @@ export function createWaveText(
   const scheduleNext = () => {
     if (!running) return;
 
-    const gap = 260 + Math.random() * 420;
+    const gap = 1200 + Math.random() * 570;
     batchTimer = window.setTimeout(() => {
       if (!running) return;
 
@@ -121,7 +121,7 @@ export function createWaveText(
         const picked = shuffled.slice(0, count);
 
         picked.forEach((inner, idx) => {
-          animChar(inner, idx * 55);
+          animChar(inner, idx * 105);
         });
       }
 
