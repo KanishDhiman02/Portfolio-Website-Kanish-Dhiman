@@ -106,6 +106,7 @@
   overflow: hidden;
   transition: 0.6s;
   text-transform: uppercase;
+  color: #ffffff;
 }
 
 .loading-content-in {
@@ -127,6 +128,7 @@
   text-align: center;
   transition: 1s;
   max-width: var(--Lsize);
+  color: #ffffff;
 }
 
 .loading-clicked .loading-content2 {
@@ -141,6 +143,7 @@
   right: 0;
   transform: translateY(-50%);
   opacity: 0.7;
+  color: #ffffff;
 }
 
 .loading-box {

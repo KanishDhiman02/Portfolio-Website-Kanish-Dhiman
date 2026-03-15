@@ -21,12 +21,54 @@ const imageUrls = [
   "/images/mysql.webp",
   "/images/typescript.webp",
   "/images/javascript.webp",
+  "/images/Python.svg",
+  "/images/NumPy.svg",
+  "/images/Pandas.svg",
+  "/images/scikit-learn.svg",
+  "/images/Matplotlib.svg",
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+
+function normalizeTexture(texture: THREE.Texture) {
+  const image = texture.image as HTMLImageElement | undefined;
+  if (!image || typeof document === "undefined") return;
+
+  const size = 512;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  // Keep all tech balls visually consistent by compositing logos on a white base.
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, size, size);
+
+  const fit = 0.72;
+  const drawW = size * fit;
+  const drawH = (image.height / image.width) * drawW;
+  const x = (size - drawW) / 2;
+  const y = (size - drawH) / 2;
+  ctx.drawImage(image, x, y, drawW, drawH);
+
+  texture.image = canvas;
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.needsUpdate = true;
+}
+
+const textures = imageUrls.map((url) =>
+  textureLoader.load(url, (loadedTexture) => normalizeTexture(loadedTexture))
+);
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
-const spheres = [...Array(30)].map(() => ({
+// 8 web skills × 3 balls each, 5 Python/ML skills × 4 balls each
+const materialIndices: number[] = [
+  ...[0, 1, 2, 3, 4, 5, 6, 7].flatMap((i) => Array(3).fill(i)),
+  ...[8, 9, 10, 11, 12].flatMap((i) => Array(4).fill(i)),
+];
+
+const spheres = materialIndices.map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
 
@@ -131,7 +173,7 @@ const TechStack = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       const threshold = document
-        .getElementById("work")!
+        .getElementById("techstack")!
         .getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
@@ -167,13 +209,13 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack" id="work">
+    <div className="techstack" id="techstack">
       <h2> My Techstack</h2> 
 
 
       <Canvas
         shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+        gl={{ alpha: true, stencil: false, depth: false, antialias: false, powerPreference: "default" }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
@@ -194,7 +236,7 @@ const TechStack = () => {
             <SphereGeo
               key={i}
               {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
+              material={materials[materialIndices[i]]}
               isActive={isActive}
             />
           ))}

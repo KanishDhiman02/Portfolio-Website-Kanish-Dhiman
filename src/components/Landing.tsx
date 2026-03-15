@@ -45,11 +45,11 @@ const Landing = () => {
                   About Me
                 </a>
                 <a
-                  href="#work"
+                  href="#projects"
                   className="screen-nav-link"
-                  onClick={(event) => handleSectionLinkClick(event, "#work")}
+                  onClick={(event) => handleSectionLinkClick(event, "#projects")}
                 >
-                  Portfolio
+                  Projects
                 </a>
                 {/* <a
                   href="#work"
@@ -58,13 +58,6 @@ const Landing = () => {
                 >
                   Services
                 </a> */}
-                <a
-                  href="#contact"
-                  className="screen-nav-link"
-                  onClick={(event) => handleSectionLinkClick(event, "#contact")}
-                >
-                  Blog
-                </a>
               </div>
               <a
               href="https://drive.google.com/drive/u/0/folders/1-H-AcQQl5N7M7JSCDE3ZP4oinw7OZaKb"

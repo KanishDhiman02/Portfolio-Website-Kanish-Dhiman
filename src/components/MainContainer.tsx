@@ -25,7 +25,7 @@ const MainContainer = () => {
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, []); // stable — no dep on isDesktopView to prevent Canvas unmount/remount on resize
 
   return (
     <div className="container-main">
