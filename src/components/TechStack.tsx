@@ -129,13 +129,24 @@ const TechStack = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const techEl = document.querySelector(".techstack");
-      if (!techEl) return;
-      const rect = techEl.getBoundingClientRect();
-      setIsActive(rect.top < window.innerHeight && rect.bottom > 0);
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const threshold = document
+        .getElementById("work")!
+        .getBoundingClientRect().top;
+      setIsActive(scrollY > threshold);
     };
+    document.querySelectorAll(".header a").forEach((elem) => {
+      const element = elem as HTMLAnchorElement;
+      element.addEventListener("click", () => {
+        const interval = setInterval(() => {
+          handleScroll();
+        }, 10);
+        setTimeout(() => {
+          clearInterval(interval);
+        }, 1000);
+      });
+    });
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -145,14 +156,12 @@ const TechStack = () => {
       (texture) =>
         new THREE.MeshPhysicalMaterial({
           map: texture,
-          emissive: "#1a1a1a",
+          emissive: "#ffffff",
           emissiveMap: texture,
-          emissiveIntensity: 0.5,
-          metalness: 0.7,
-          roughness: 0.2,
-          clearcoat: 0.9,
-          clearcoatRoughness: 0.1,
-          reflectivity: 0.8,
+          emissiveIntensity: 0.3,
+          metalness: 0.5,
+          roughness: 1,
+          clearcoat: 0.1,
         })
     );
   }, []);
@@ -166,10 +175,10 @@ const TechStack = () => {
         shadows
         gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.2)}
+        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
       >
-        <ambientLight intensity={0.8} />
+        <ambientLight intensity={1} />
         <spotLight
           position={[20, 20, 25]}
           penumbra={1}
@@ -178,8 +187,7 @@ const TechStack = () => {
           castShadow
           shadow-mapSize={[512, 512]}
         />
-        <directionalLight position={[0, 5, -4]} intensity={1.5} />
-        <directionalLight position={[-5, 3, 8]} intensity={0.5} />
+        <directionalLight position={[0, 5, -4]} intensity={2} />
         <Physics gravity={[0, 0, 0]}>
           <Pointer isActive={isActive} />
           {spheres.map((props, i) => (
@@ -192,12 +200,12 @@ const TechStack = () => {
           ))}
         </Physics>
         <Environment
-          preset="sunset"
-          environmentIntensity={0.7}
+          preset="city"
+          environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />
         <EffectComposer enableNormalPass={false}>
-          <N8AO color="#f5f3ef" aoRadius={2} intensity={0.8} />
+          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
         </EffectComposer>
       </Canvas>
     </div>
