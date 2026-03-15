@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 import "./styles/Navbar.css";
 
-gsap.config({ trialWarn: false } as any);
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
@@ -32,8 +31,9 @@ const Navbar = () => {
           e.preventDefault();
           let elem = e.currentTarget as HTMLAnchorElement;
           let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
-        }
+          smoother.scrollTo(section, true, "top top");          if (section === "#projects") {
+            window.dispatchEvent(new CustomEvent("navigateToProjects"));
+          }        }
       });
     });
     window.addEventListener("resize", () => {

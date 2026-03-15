@@ -10,6 +10,9 @@ const Landing = () => {
 
     if (smoother) {
       smoother.scrollTo(target, true, "top top");
+      if (target === "#projects") {
+        window.dispatchEvent(new CustomEvent("navigateToProjects"));
+      }
       return;
     }
 

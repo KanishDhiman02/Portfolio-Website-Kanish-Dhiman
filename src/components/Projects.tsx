@@ -42,12 +42,17 @@ const ProjectCard = ({ title, techStack, bullets, cardClass, link }: any) => {
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [openProgress, setOpenProgress] = useState(0);
+  const navTriggered = useRef(false);
+  const navTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const clamp = (value: number, min: number, max: number) =>
       Math.min(Math.max(value, min), max);
 
     const updateOpenProgress = () => {
+      // While a navbar navigation is in progress, keep cards fully open
+      if (navTriggered.current) return;
+
       const section = sectionRef.current;
       if (!section) return;
 
@@ -67,13 +72,26 @@ const Projects = () => {
       );
     };
 
+    const handleNavigation = () => {
+      navTriggered.current = true;
+      setOpenProgress(1);
+      if (navTimerRef.current) clearTimeout(navTimerRef.current);
+      // 2000ms covers the smoother's 1.7s animation; after that, normal scroll logic resumes
+      navTimerRef.current = setTimeout(() => {
+        navTriggered.current = false;
+      }, 2000);
+    };
+
     updateOpenProgress();
     window.addEventListener('scroll', updateOpenProgress, { passive: true });
     window.addEventListener('resize', updateOpenProgress);
+    window.addEventListener('navigateToProjects', handleNavigation);
 
     return () => {
       window.removeEventListener('scroll', updateOpenProgress);
       window.removeEventListener('resize', updateOpenProgress);
+      window.removeEventListener('navigateToProjects', handleNavigation);
+      if (navTimerRef.current) clearTimeout(navTimerRef.current);
     };
   }, []);
 
@@ -112,10 +130,10 @@ const Projects = () => {
           title="Frontend Architecture"
           techStack="React • TypeScript • CSS 3D"
           bullets={[
-            "Engineered a responsive, component-driven web application using React and TypeScript to ensure strict type safety and maintainable code.",
-            "Implemented hardware-accelerated 3D CSS matrix transforms coupled with the Intersection Observer API for performant, scroll-linked physics.",
-            "Optimized DOM rendering and responsive typography to guarantee zero cumulative layout shifts (CLS) and enterprise-grade frontend performance."
-          ]}
+      "Engineered a responsive, component-driven web application using React and TypeScript to ensure strict type safety and maintainable code.",
+      "Implemented hardware-accelerated 3D CSS matrix transforms coupled with the Intersection Observer API for performant, scroll-linked physics.",
+      "Optimized DOM rendering and responsive typography to guarantee zero cumulative layout shifts (CLS) and enterprise-grade frontend performance."
+    ]}
         />
       </div>
     </section>
