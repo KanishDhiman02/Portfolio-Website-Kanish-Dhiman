@@ -88,6 +88,9 @@ function SphereGeo({
   isActive,
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
+  
+  // Memoize the initial position so the balls don't respawn on re-renders
+  const initialPosition = useMemo(() => [r(20), r(20) - 25, r(20) - 10] as [number, number, number], [r]);
 
   useFrame((_state, delta) => {
     if (!isActive) return;
@@ -111,7 +114,7 @@ function SphereGeo({
       linearDamping={0.75}
       angularDamping={0.15}
       friction={0.2}
-      position={[r(20), r(20) - 25, r(20) - 10]}
+      position={initialPosition}
       ref={api}
       colliders={false}
     >
@@ -183,7 +186,10 @@ const TechStack = () => {
       const threshold = document
         .getElementById("techstack")!
         .getBoundingClientRect().top;
-      setIsActive(scrollY > threshold);
+        setIsActive((prev) => {
+          if (prev) return true;
+          return scrollY > threshold;
+        });
     };
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
