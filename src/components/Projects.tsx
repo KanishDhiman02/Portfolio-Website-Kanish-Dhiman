@@ -1,7 +1,15 @@
 import { type CSSProperties, useEffect, useRef, useState } from 'react';
 import './styles/Projects.css'; // We will put the CSS here
 
-const ProjectCard = ({ title, techStack, bullets, cardClass, link }: any) => {
+interface ProjectCardProps {
+  title: string;
+  techStack: string;
+  bullets: string[];
+  cardClass: string;
+  link: string;
+}
+
+const ProjectCard = ({ title, techStack, bullets, cardClass, link }: ProjectCardProps) => {
 
   return (
     <div 

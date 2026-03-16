@@ -59,7 +59,7 @@ const Loading = ({ percent, setIsLoading }: LoadingProps) => {
     return () => {
       isMounted = false;
     };
-  }, [isLoaded]);
+  }, [isLoaded, setIsLoading]);
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const { currentTarget: target } = e;
