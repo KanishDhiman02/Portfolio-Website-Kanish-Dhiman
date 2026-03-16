@@ -129,7 +129,7 @@ const Projects = () => {
           bullets={[
             "Developed a robust dimensionality-reduction framework achieving a 65% reduction in feature space, significantly lowering downstream storage and processing costs.",
             "Engineered the data pipeline to maintain sub-second prediction latency and high throughput across 12 distinct, complex datasets.",
-            "Subjected the system architecture to rigorous statistical benchmarking (Friedman/Wilcoxon); framework peer-reviewed and published at the ANTIC 2025 conference."
+            "Subjected the system architecture to rigorous statistical benchmarking (Friedman/Wilcoxon); framework accepted and presented at the ANTIC 2025 conference. (Springer CCIS Forthcoming)"
           ]}
         />
         <ProjectCard 
