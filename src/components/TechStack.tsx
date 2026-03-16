@@ -182,14 +182,16 @@ const TechStack = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const section = document.getElementById("techstack");
+      if (!section) return;
+
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("techstack")!
-        .getBoundingClientRect().top;
-        setIsActive((prev) => {
-          if (prev) return true;
-          return scrollY > threshold;
-        });
+      const threshold = section.offsetTop; // document-relative, not viewport-relative
+
+      setIsActive((prev) => {
+        if (prev) return true;
+        return scrollY + window.innerHeight > threshold; // visible in viewport
+      });
     };
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
@@ -226,7 +228,10 @@ const TechStack = () => {
     <div 
       className="techstack" 
       id="techstack"
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setIsActive(true); // activate immediately on hover
+      }}
       onMouseLeave={() => setIsHovered(false)}
     >
       <h2> My Techstack</h2> 
