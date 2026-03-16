@@ -100,7 +100,7 @@ const Landing = () => {
 
               {/* Photo - right side */}
               <div className="screen-photo">
-                <img src="/images/mee.png" alt="Kanish Dhiman" className="screen-photo-img" />
+                <img src="/images/mee.webp" alt="Kanish Dhiman" className="screen-photo-img" />
               </div>
             </div>
             {/* Bottom bar */}

@@ -21,11 +21,11 @@ const imageUrls = [
   "/images/mysql.webp",
   "/images/typescript.webp",
   "/images/javascript.webp",
-  "/images/Python.svg",
-  "/images/NumPy.svg",
-  "/images/Pandas.svg",
-  "/images/scikit-learn.svg",
-  "/images/Matplotlib.svg",
+  "/images/Python.webp",
+  "/images/NumPy.webp",
+  "/images/Pandas.webp",
+  "/images/scikit-learn.webp",
+  "/images/Matplotlib.webp",
 ];
 
 function normalizeTexture(texture: THREE.Texture) {

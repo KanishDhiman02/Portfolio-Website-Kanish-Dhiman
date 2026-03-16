@@ -37,7 +37,7 @@ const About = () => {
           </div>
 
           <div className="about-photo-card">
-            <img src="/images/framework.png" alt="Framework" className="about-photo-img" />
+            <img src="/images/framework.webp" alt="Framework" className="about-photo-img" />
             <div className="about-photo-badge">
               <MdArrowOutward />
             </div>
@@ -60,7 +60,7 @@ const About = () => {
           </div>
 
           <div className="about-photo2-card">
-            <img src="/images/leet.png" alt="consistency" className="about-photo2-img" />
+            <img src="/images/leet.webp" alt="consistency" className="about-photo2-img" />
           </div>
 
           <div className="about-points">
