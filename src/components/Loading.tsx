@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 
-import Marquee from "react-fast-marquee";
+import MarqueeComponent from "react-fast-marquee";
+const Marquee = (MarqueeComponent as any).default || MarqueeComponent;
 
 type LoadingProps = {
   percent: number;
