@@ -136,13 +136,20 @@ function SphereGeo({
 type PointerProps = {
   vec?: THREE.Vector3;
   isActive: boolean;
+  isHovered: boolean;
 };
 
-function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
+function Pointer({ vec = new THREE.Vector3(), isActive, isHovered }: PointerProps) {
   const ref = useRef<RapierRigidBody>(null);
 
   useFrame(({ pointer, viewport }) => {
     if (!isActive) return;
+    
+    if (!isHovered) {
+      ref.current?.setNextKinematicTranslation(new THREE.Vector3(100, 100, 100));
+      return;
+    }
+
     const targetVec = vec.lerp(
       new THREE.Vector3(
         (pointer.x * viewport.width) / 2,
@@ -168,6 +175,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -209,7 +217,12 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack" id="techstack">
+    <div 
+      className="techstack" 
+      id="techstack"
+      onPointerEnter={() => setIsHovered(true)}
+      onPointerLeave={() => setIsHovered(false)}
+    >
       <h2> My Techstack</h2> 
 
 
@@ -231,7 +244,7 @@ const TechStack = () => {
         />
         <directionalLight position={[0, 5, -4]} intensity={2} />
         <Physics gravity={[0, 0, 0]}>
-          <Pointer isActive={isActive} />
+          <Pointer isActive={isActive} isHovered={isHovered} />
           {spheres.map((props, i) => (
             <SphereGeo
               key={i}
