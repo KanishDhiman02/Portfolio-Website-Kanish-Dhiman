@@ -319,6 +319,7 @@
 /* ===== CIRCLES (from Navbar) ===== */
 
 .landing-circle1 {
+  display: none;
   top: 0%;
   left: 0%;
   z-index: 15;
@@ -375,7 +376,7 @@
 
 @media screen and (min-width: 500px) {
   .landing-circle2 {
-    display: block;
+    display: none;
   }
 }
 

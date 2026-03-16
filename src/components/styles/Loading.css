@@ -319,7 +319,7 @@
   left: 0;
   width: 100%;
   transform: translateY(-50%);
-  color: var(--backgroundColor);
+  color: #000;
   font-size: 60px;
   font-weight: 600;
   text-transform: uppercase;
@@ -334,7 +334,7 @@
   content: "";
   width: 20px;
   height: 20px;
-  background-color: var(--backgroundColor);
+  background-color: #000;
   position: absolute;
   top: 50%;
   border-radius: 50px;
@@ -413,4 +413,7 @@
   .loader-title {
     font-size: 18px;
   }
+}
+.loader-title {
+  color: black;
 }
