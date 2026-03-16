@@ -7,13 +7,19 @@ import SocialIcons from "./SocialIcons";
 import Projects from "./Projects";
 import WaveCta from "./WaveCta";
 import setSplitText from "./utils/splitText";
+import { useLoading } from "../context/LoadingProvider";
 
 const TechStack = lazy(() => import("./TechStack"));
 
 const MainContainer = () => {
+  const { setAppReady } = useLoading();
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
     window.innerWidth > 1024
   );
+
+  useEffect(() => {
+    setAppReady(true);
+  }, [setAppReady]);
 
   useEffect(() => {
     const resizeHandler = () => {
