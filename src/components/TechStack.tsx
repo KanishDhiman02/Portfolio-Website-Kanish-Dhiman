@@ -226,8 +226,8 @@ const TechStack = () => {
     <div 
       className="techstack" 
       id="techstack"
-      onPointerEnter={() => setIsHovered(true)}
-      onPointerLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <h2> My Techstack</h2> 
 
