@@ -241,7 +241,12 @@ const TechStack = () => {
         shadows
         gl={{ alpha: true, stencil: false, depth: false, antialias: false, powerPreference: "default" }}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
+        onCreated={(state) => {
+          state.gl.toneMappingExposure = 1.5;
+          state.gl.domElement.addEventListener('webglcontextlost', (e) => {
+            e.preventDefault();
+          });
+        }}
         className="tech-canvas"
       >
         <ambientLight intensity={1} />
