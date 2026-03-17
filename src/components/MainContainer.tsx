@@ -43,11 +43,9 @@ const MainContainer = () => {
             <Landing />
             <About />
             <Projects />
-            {isDesktopView && (
-              <Suspense fallback={<div>Loading....</div>}>
-                <TechStack />
-              </Suspense>
-            )}
+            <Suspense fallback={<div>Loading....</div>}>
+              <TechStack />
+            </Suspense>
             <WaveCta />
             <Contact />
           </div>

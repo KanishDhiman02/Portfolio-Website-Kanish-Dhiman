@@ -62,11 +62,18 @@ const textures = imageUrls.map((url) =>
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
-// 8 web skills × 3 balls each, 5 Python/ML skills × 4 balls each
-const materialIndices: number[] = [
-  ...[0, 1, 2, 3, 4, 5, 6, 7].flatMap((i) => Array(3).fill(i)),
-  ...[8, 9, 10, 11, 12].flatMap((i) => Array(4).fill(i)),
-];
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+// 8 web skills × 3 balls each, 5 Python/ML skills × 4 balls each (reduced on mobile)
+const materialIndices: number[] = isMobile
+  ? [
+      ...[0, 1, 2, 3, 4, 5, 6, 7].flatMap((i) => Array(1).fill(i)),
+      ...[8, 9, 10, 11, 12].flatMap((i) => Array(1).fill(i)),
+    ]
+  : [
+      ...[0, 1, 2, 3, 4, 5, 6, 7].flatMap((i) => Array(3).fill(i)),
+      ...[8, 9, 10, 11, 12].flatMap((i) => Array(4).fill(i)),
+    ];
 
 const spheres = materialIndices.map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
@@ -193,6 +200,17 @@ const TechStack = () => {
         return scrollY + window.innerHeight > threshold; // visible in viewport
       });
     };
+    
+    // Force activate on touch start for mobile if in view
+    const handleTouch = () => {
+      const section = document.getElementById("techstack");
+      if (!section) return;
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      if (scrollY + window.innerHeight > section.offsetTop) {
+        setIsActive(true);
+      }
+    };
+
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
       element.addEventListener("click", () => {
@@ -205,8 +223,11 @@ const TechStack = () => {
       });
     });
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("touchstart", handleTouch, { once: true });
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchstart", handleTouch);
     };
   }, []);
   const materials = useMemo(() => {
@@ -238,8 +259,16 @@ const TechStack = () => {
 
 
       <Canvas
-        shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false, powerPreference: "default" }}
+        shadows={!isMobile}
+        gl={{ 
+          alpha: true, 
+          stencil: false, 
+          depth: false, 
+          antialias: false, 
+          powerPreference: "default",
+          failIfMajorPerformanceCaveat: false 
+        }}
+        dpr={[1, 1.5]}
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => {
           state.gl.toneMappingExposure = 1.5;
@@ -275,9 +304,11 @@ const TechStack = () => {
           environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />
-        <EffectComposer enableNormalPass={false}>
-          <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
-        </EffectComposer>
+        {!isMobile && (
+          <EffectComposer enableNormalPass={false}>
+            <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
+          </EffectComposer>
+        )}
       </Canvas>
     </div>
   );
