@@ -10,12 +10,17 @@ import setSplitText from "./utils/splitText";
 import { useLoading } from "../context/LoadingProvider";
 
 const TechStack = lazy(() => import("./TechStack"));
+const preloadTechStack = () => import("./TechStack");
 
 const MainContainer = () => {
   const { setAppReady } = useLoading();
 
   useEffect(() => {
     setAppReady(true);
+    const timer = setTimeout(() => {
+      preloadTechStack();
+    }, 2000);
+    return () => clearTimeout(timer);
   }, [setAppReady]);
 
   useEffect(() => {
@@ -39,7 +44,18 @@ const MainContainer = () => {
             <Landing />
             <About />
             <Projects />
-            <Suspense fallback={<div>Loading....</div>}>
+            <Suspense fallback={
+              <div style={{ 
+                height: '600px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                color: '#888',
+                fontSize: '14px'
+              }}>
+                Loading 3D experience...
+              </div>
+            }>
               <TechStack />
             </Suspense>
             <WaveCta />
