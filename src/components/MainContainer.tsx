@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import About from "./About";
 import Contact from "./Contact";
 import Landing from "./Landing";
@@ -13,9 +13,6 @@ const TechStack = lazy(() => import("./TechStack"));
 
 const MainContainer = () => {
   const { setAppReady } = useLoading();
-  const [isDesktopView, setIsDesktopView] = useState<boolean>(
-    window.innerWidth > 1024
-  );
 
   useEffect(() => {
     setAppReady(true);
@@ -27,7 +24,6 @@ const MainContainer = () => {
       setIsDesktopView(window.innerWidth > 1024);
     };
     resizeHandler();
-    window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
