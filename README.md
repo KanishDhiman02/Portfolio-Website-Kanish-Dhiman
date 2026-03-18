@@ -1,9 +1,9 @@
 # High-Performance WebGL Portfolio Architecture
 
 [![Live Demo](https://img.shields.io/badge/Live_Deployment-kanishdhiman.vercel.app-0F4539?style=for-the-badge)](https://kanishdhiman.vercel.app)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)]()
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]()
-[![Three.js](https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white)]()
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Three.js](https://img.shields.io/badge/Three.js-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/)
 
 A highly optimized, component-driven web application engineered to showcase scalable backend architecture, computational optimization engines, and high-performance system design. 
 
