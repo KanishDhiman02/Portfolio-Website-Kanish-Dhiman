@@ -212,16 +212,20 @@
     margin: 0 auto;         
   }
 
-  .project-card-container.card-3 .project-card-back {
-    padding-left: 35px;
+  .project-card-back {
+    padding: 28px !important;
   }
 
-  
+  .project-card-container.card-3 .project-card-back {
+    padding-left: 28px !important;
+  }
+
+
   .project-card-container.card-3 .project-github-link,
   .project-card-container.card-3 .project-title,
   .project-card-container.card-3 .project-tech,
   .project-card-container.card-3 .project-details {
-    padding-left: 0;        
+    padding-left: 0 !important;
   }
 }
 
