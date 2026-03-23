@@ -183,27 +183,35 @@
     flex-direction: column;
     gap: 24px;
     min-height: auto;
+    --project-open-progress: 1; /* forces "opened" state on mobile */
+    overflow-x: hidden;
+  }
+
+  .projects-grid .project-card-container:not(:first-child) {
+    margin-left: 0 !important; /* override inline calc */
+  }
+
+  .projects-grid .project-card-container,
+  .projects-grid .project-card-container.card-1,
+  .projects-grid .project-card-container.card-2,
+  .projects-grid .project-card-container.card-3 {
+    margin-left: 0 !important;
+    transform: none !important; /* Use none instead of translateX(0) rotate(0) */
+    z-index: auto;
   }
 
   .project-card-container.card-3 .project-card-back {
     padding-left: 35px;
   }
+}
 
-  .projects-grid .project-card-container:not(:first-child),
-  .projects-grid .project-card-container.card-1,
-  .projects-grid .project-card-container.card-2,
-  .projects-grid .project-card-container.card-3 {
-    margin-left: 0;
-    transform: translateX(0) rotate(0deg) scale(1);
-  }
-}@media (max-width: 500px) {
+@media (max-width: 500px) {
   .project-card-container {
-    width: 95vw;
+    width: 90vw;   /* slight inset looks cleaner */
     height: 520px;
   }
   .project-card-back {
     padding: 24px;
-    padding-right: 40px;
   }
   .project-title {
     font-size: 20px;
@@ -215,5 +223,8 @@
   }
   .projects-section {
     padding-top: 80px;
+    padding-left: 0;    /* prevent any section-level shift */
+    padding-right: 0;
+    overflow-x: hidden;
   }
 }
