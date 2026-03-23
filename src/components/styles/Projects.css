@@ -196,4 +196,24 @@
     margin-left: 0;
     transform: translateX(0) rotate(0deg) scale(1);
   }
+}@media (max-width: 500px) {
+  .project-card-container {
+    width: 95vw;
+    height: 520px;
+  }
+  .project-card-back {
+    padding: 24px;
+    padding-right: 40px;
+  }
+  .project-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .project-bullet {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .projects-section {
+    padding-top: 80px;
+  }
 }

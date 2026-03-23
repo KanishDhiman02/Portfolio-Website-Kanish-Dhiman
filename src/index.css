@@ -7,6 +7,7 @@
   font-style: normal;
   line-height: 1.5;
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
   color-scheme: light dark;
   color: #1a1a1a;
   background-color: var(--backgroundColor);
@@ -137,5 +138,14 @@ body {
 @media screen and (max-width: 900px) {
   .techstack h2 {
     font-size: 40px;
+  }
+}
+html {
+  scroll-padding-top: 100px;
+}
+
+@media (max-width: 500px) {
+  html {
+    scroll-padding-top: 80px;
   }
 }
