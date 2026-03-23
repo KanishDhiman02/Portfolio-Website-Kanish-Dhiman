@@ -154,7 +154,3 @@ html, body {
   overflow-x: hidden;
   max-width: 100%;
 }
-/* Global box-sizing */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
