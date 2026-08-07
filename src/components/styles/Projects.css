@@ -62,6 +62,11 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
+.project-card-container.card-1 .project-card-back,
+.project-card-container.card-2 .project-card-back {
+  padding: 30px;
+}
+
 .project-title {
   font-size: 24px;
   font-weight: 700;
@@ -77,6 +82,33 @@
   color: #666;
   margin-bottom: 24px;
   font-weight: 600;
+}
+
+.project-card-container.card-1 .project-title,
+.project-card-container.card-2 .project-title {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.project-card-container.card-1 .project-tech,
+.project-card-container.card-2 .project-tech {
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+
+.project-card-container.card-1 .project-bullet,
+.project-card-container.card-2 .project-bullet {
+  font-size: 13px;
+  line-height: 1.38;
+  margin-bottom: 10px;
+}
+
+.project-card-container.card-3 .project-card-back {
+  padding-bottom: 25px;
+}
+
+.project-card-container.card-3 .project-details {
+  margin-bottom: 6px;
 }
 
 .project-bullet {

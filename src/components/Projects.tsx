@@ -113,23 +113,23 @@ const Projects = () => {
         <ProjectCard 
           cardClass="card-1"
           link="https://github.com/KanishDhiman02/Hummingbird_AHO_Optimizer_Engine.git"
-          title="Hummingbird-AHO Engine"
-          techStack="Python • NumPy • Object-Oriented Design"
+          title="Hummingbird-AHO Engine / 2S-AHO Scalable Framework"
+          techStack="Python • C++ • Machine Learning • Algorithm Design • PyPI • GitHub • Springer (ANTIC 2025)"
           bullets={[
-            "Engineered a production-ready, highly modular optimization library designed to aggressively minimize computational latency in high-dimensional systems.",
-            "Architected decoupled, scalable object-oriented structures (Optimizer and DataLoader classes) to separate data ingestion from the core algorithmic logic.",
-            "Optimized system-level resource utilization by implementing a vectorized visit-table mechanism, successfully mitigating redundant CPU cycles and memory overhead."
+            " Cut inference latency from 3.2s to 0.8s and reduced memory overhead by 40% by engineering a vectorized visit-table mechanism within Hummingbird-AHO, an open-source Python package for scalable machine learning data ingestion.",
+            "Shrank feature space by 65% while preserving sub-second latency through a dimensionality-reduction pipeline that used SMOTE to correct class imbalance.",
+            "Validated the optimization method and performance benchmarks through a Springer-indexed research paper published for ANTIC 2025."
           ]}
         />
         <ProjectCard 
           cardClass="card-2"
-          link="https://drive.google.com/file/d/1MrtO8eSkoLvxoBd6zdWrVhmWpUOrxpPF/view?usp=share_link"
-          title="2S-AHO: Scalable Framework"
-          techStack="Systems Performance • Machine Learning"
+          link="https://github.com/KanishDhiman02/aegis-proxy.git"
+          title="Aegis: High-Performance C++20 Edge Proxy"
+          techStack="C++20 • Asio (Coroutines) • CMake • Systems Design • GitHub"
           bullets={[
-            "Developed a robust dimensionality-reduction framework achieving a 65% reduction in feature space, significantly lowering downstream storage and processing costs.",
-            "Engineered the data pipeline to maintain sub-second prediction latency and high throughput across 12 distinct, complex datasets.",
-            "Subjected the system architecture to rigorous statistical benchmarking (Friedman/Wilcoxon); framework accepted and presented at the ANTIC 2025 conference. (Springer CCIS Forthcoming)"
+            "Engineered a Layer-4 reverse proxy with consistent-hash routing (500 virtual nodes/backend), a 64-way sharded token-bucket rate limiter, and a 3-state circuit breaker with half-open trial gating; sustained 71.7K req/s at 3.6msp99 latency (wrk, 4 threads/100 connections), with lower per-request overhead than an equivalent single-worker nginx config in this reproducible benchmark (./bench.sh).",
+            "Resolved a coroutine lifetime hazard with lldb and sanitizers, then validated crash-free load tests with safe backend failover.",
+            "Fixed hash-ring bit diffusion to reduce load-distribution deviation from 61% to 4%."
           ]}
         />
         <ProjectCard 
@@ -138,10 +138,10 @@ const Projects = () => {
           title="Frontend Architecture"
           techStack="React • TypeScript • CSS 3D"
           bullets={[
-      "Engineered a responsive, component-driven web application using React and TypeScript to ensure strict type safety and maintainable code.",
-      "Implemented hardware-accelerated 3D CSS matrix transforms coupled with the Intersection Observer API for performant, scroll-linked physics.",
-      "Optimized DOM rendering and responsive typography to guarantee zero cumulative layout shifts (CLS) and enterprise-grade frontend performance."
-    ]}
+            "Engineered a responsive, component-driven web application using React and TypeScript to ensure strict type safety and maintainable code.",
+            "Implemented hardware-accelerated 3D CSS matrix transforms coupled with the Intersection Observer API for performant, scroll-linked physics.",
+            "Optimized DOM rendering and responsive typography to guarantee zero cumulative layout shifts (CLS) and enterprise-grade frontend performance."
+          ]}
         />
       </div>
     </section>

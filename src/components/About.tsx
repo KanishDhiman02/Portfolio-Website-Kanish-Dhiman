@@ -30,7 +30,7 @@ const About = () => {
                 <path d="M12 6v6l4 2" />
               </svg>
             </div>
-            <span className="about-stat-num">500+</span>
+            <span className="about-stat-num">600+</span>
             <p className="about-stat-label">
               Data Structures & Algorithms problems solved across LeetCode and GFG, heavily focusing on dynamic programming, Greedy approaches , Devide and Conquer and Branch & Bound
             </p>
